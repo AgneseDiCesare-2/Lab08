@@ -11,19 +11,40 @@ class Controller:
         self._model = model
         self._idMap = {}
         self.fillIDMap()
+        self._max_anni=None
+        self._max_ore=None
+        self._nerc=None
+
 
     def handleWorstCase(self, e):
-        # TO FILL
-        pass
+        soluzioni=self._model.worstCase(self._nerc, self._max_anni, self._max_ore)
+        print(soluzioni)
+        return
 
     def fillDD(self):
         nercList = self._model.listNerc
+        #self._view._ddNerc.options.clear()
 
         for n in nercList:
-            self._view._ddNerc.options.append(ft.dropdown.Option(n))
+            self._view._ddNerc.options.append(
+                ft.dropdown.Option(key=n, data=n)
+            )
+
+        self._view._ddNerc.on_change = self.getNerc
         self._view.update_page()
 
     def fillIDMap(self):
         values = self._model.listNerc
         for v in values:
             self._idMap[v.value] = v
+
+    def getNerc(self, e):
+        self._nerc=e.control.value
+
+    def get_x(self):
+        self._max_anni=self._view._txtYears.value
+
+    def get_y(self):
+        self._max_ore=self._view._txtHoures.value
+
+

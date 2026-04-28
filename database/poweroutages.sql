@@ -21,7 +21,7 @@
 
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `poweroutages` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
-USE `poweroutages`;
+USE `poweroutages`
 
 --
 -- Table structure for table `Area`

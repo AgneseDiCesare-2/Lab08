@@ -15,6 +15,14 @@ class Event:
     _demand_loss: int
 
     @property
+    def durata(self):
+        return self._date_event_finished - self._date_event_began
+
+    @property
+    def anno(self):
+        return self._date_event_began.year
+
+    @property
     def id(self):
         return self._id
 

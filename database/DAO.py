@@ -14,8 +14,8 @@ class DAO():
         result = []
 
         cursor = conn.cursor(dictionary=True)
-        query = """ ADD YOUR QUERY """
-
+        query = """ Select *
+                    from nerc"""
         cursor.execute(query)
 
         for row in cursor:
@@ -25,14 +25,16 @@ class DAO():
         conn.close()
         return result
 
+    #restituisce tutti i black out nel nerc selezionato
     @staticmethod
-    def getAllEvents(nerc):
+    def getAllEvents(nerc: Nerc):
         conn = DBConnect.get_connection()
 
         result = []
 
         cursor = conn.cursor(dictionary=True)
-        query = """ ADD YOUR QUERY """
+        query = """Select *
+                    from poweroutages"""
 
         cursor.execute(query, (nerc.id,))
 
