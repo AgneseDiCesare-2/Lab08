@@ -38,8 +38,13 @@ class Controller:
         for v in values:
             self._idMap[v.value] = v
 
+
+
     def getNerc(self, e):
-        self._nerc=e.control.value
+        selected_key = e.control.value
+        self._nerc = self._idMap[selected_key]
+
+        #print("NERC selezionato:", self._nerc)
 
     def get_x(self):
         self._max_anni=self._view._txtYears.value
