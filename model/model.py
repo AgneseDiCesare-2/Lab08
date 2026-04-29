@@ -27,7 +27,7 @@ class Model:
         if len(parziale)==0:
             return True #to aggiungendo il primo
         else:
-            if parziale[-1].anno- i.anno <=maxH:
+            if abs(parziale[-1].anno- i.anno) <= maxH:
                 return True
             else:
                 return False
@@ -37,7 +37,7 @@ class Model:
         #clientiTot=0
         durata_tot=0
         #una roba del genere --> pos è l'indice dell'elemento di riferimento
-        if pos==len(parziale):
+        if pos==len(tutti_eventi):
             self._soluzioni.append(copy.deepcopy(parziale))
         else:
             #pos è l'elemento che sto ponendo come primo --> partiamo da zero
@@ -58,7 +58,7 @@ class Model:
         durata_ok=[]
         for evento in all:
             durata = evento.durata
-            if durata <= maxY: #max durata in ore
+            if durata <= int(maxY): #max durata in ore
                durata_ok.append(evento)
         return durata_ok #restituisce tutti gli eventi che rispettano i vincoli di nerc e durata
 

@@ -27,7 +27,7 @@ class Controller:
 
         for n in nercList:
             self._view._ddNerc.options.append(
-                ft.dropdown.Option(key=n, data=n)
+                ft.dropdown.Option(key=n.value, data=n)
             )
 
         self._view._ddNerc.on_change = self.getNerc
@@ -50,6 +50,6 @@ class Controller:
         self._max_anni=self._view._txtYears.value
 
     def get_y(self):
-        self._max_ore=self._view._txtHoures.value
+        self._max_ore=self._view._txtHours.value
 
 

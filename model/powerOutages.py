@@ -15,8 +15,9 @@ class Event:
     _demand_loss: int
 
     @property
-    def durata(self):
-        return self._date_event_finished - self._date_event_began
+    def durata(self):  # restituisce le ore
+        delta = self._date_event_finished - self._date_event_began
+        return delta.total_seconds() / 3600
 
     @property
     def anno(self):
