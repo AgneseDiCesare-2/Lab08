@@ -17,8 +17,10 @@ class Controller:
 
 
     def handleWorstCase(self, e):
-        soluzioni=self._model.worstCase(self._nerc, self._max_anni, self._max_ore)
-        print(soluzioni)
+        soluzioni=self._model.worstCase(self._nerc, self.get_y(), self.get_x())
+        for soluzione in soluzioni:
+            self._view._txtOut.controls.append(ft.Text(soluzione))
+        self._view._page.update()
         return
 
     def fillDD(self):
@@ -47,9 +49,17 @@ class Controller:
         #print("NERC selezionato:", self._nerc)
 
     def get_x(self):
-        self._max_anni=self._view._txtYears.value
+        value = (self._view._txtYears.value)
+        if value == "":
+            return None
+        self._max_anni=int(value)
+        return self._max_anni
 
     def get_y(self):
-        self._max_ore=self._view._txtHours.value
+        value = (self._view._txtHours.value)
+        if value == "":
+            return None
+        self._max_ore=float(value)
+        return self._max_ore
 
 
