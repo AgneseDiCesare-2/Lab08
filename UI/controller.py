@@ -17,10 +17,11 @@ class Controller:
 
 
     def handleWorstCase(self, e):
-        soluzioni=self._model.worstCase(self._nerc, self.get_y(), self.get_x())
+        (soluzioni, customers)=self._model.worstCase(self._nerc, self.get_y(), self.get_x())
+        self._view._txtOut.controls.append(ft.Text(f"Il numero massimo di clienti coinvolti è {customers}"))
         for soluzione in soluzioni:
             self._view._txtOut.controls.append(ft.Text(soluzione))
-        self._view._page.update()
+        self._view._txtOut.update()
         return
 
     def fillDD(self):

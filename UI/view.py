@@ -6,9 +6,9 @@ class View(ft.UserControl):
     def __init__(self, page: ft.Page):
         super().__init__()
         # page stuff
-
         self._txtOut = None
         self._page = page
+        self._page.scroll = ft.ScrollMode.AUTO #Aggiungi questo quando l'output è troppo giù!!!
         self._page.title = "TdP 2024 - Insurance Unit"
         self._page.horizontal_alignment = 'CENTER'
         self._page.theme_mode = ft.ThemeMode.LIGHT
@@ -59,7 +59,7 @@ class View(ft.UserControl):
         self._controller.fillDD()
 
         #TextOutput
-        self._txtOut = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=False)
+        self._txtOut = ft.ListView(height=300, spacing=10, padding=20, auto_scroll=False)
 
         self._page.add(self._txtOut)
 
